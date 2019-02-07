@@ -2,7 +2,7 @@ import requests
 import re, os, sys
 import pickle
 import dateutil.parser as dparser
-from bs4 import BeautifulSoup, SoupStrainer
+from bs4 import BeautifulSoup as bs
 from post_body import shared_body, extra_body1, extra_body2
 
 os.chdir(os.path.dirname(sys.argv[0]))
@@ -19,7 +19,7 @@ rubbish = ["food", "recycling", "refuse"]
 def get_init_aspx_vars():
 
 	response = requests.get(url)
-	init_soup = BeautifulSoup(response.content, 'html.parser')
+	init_soup = bs(response.content, 'html.parser')
 
 	update_aspx_vars(init_soup)
 
@@ -48,7 +48,7 @@ def gen_and_post_payload(added_body):
 
 	response = requests.post(url, data = payload)
 
-	soup = BeautifulSoup(response.content, 'html.parser')
+	soup = bs(response.content, 'html.parser')
 
 	return soup
 
@@ -60,7 +60,8 @@ def find_address_id(address):
 
 	update_aspx_vars(address_soup)
 
-	address_id = [option['value'] for option in address_soup.find_all('option') if address['House_no'] in option.text]
+	address_options = address_soup.find_all('option')
+	address_id = [option['value'] for option in address_options if address['House_no'] in option.text]
 	address_id = int(address_id[0])
 
 	return address_id
