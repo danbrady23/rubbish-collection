@@ -1,0 +1,4 @@
+*.pkl
+*.html
+*.pyc
+/holiday_page
