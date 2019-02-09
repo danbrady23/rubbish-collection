@@ -1,8 +1,11 @@
 import requests
-import re
+import re, os, sys
 import pickle
 import dateutil.parser as dparser
 from bs4 import BeautifulSoup as bs
+
+os.chdir(os.path.dirname(sys.argv[0]))
+
 
 url = 'https://www.lewisham.gov.uk/myservices/wasterecycle/Pages/Bank-holiday-collections.aspx'
 

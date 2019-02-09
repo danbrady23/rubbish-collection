@@ -90,11 +90,12 @@ def find_collection_date(search_str):
 	else:
 		next_collection = dparser.parse(rounds_list[index[0]],fuzzy = True, dayfirst = True)
 
-	with open('holiday_changes.pkl', 'r') as file:
-		holiday_dates = pickle.load(file)
+	if os.path.isfile('holiday_changes.pkl'):
+		with open('holiday_changes.pkl', 'r') as file:
+			holiday_dates = pickle.load(file)
 
-	if next_collection in holiday_dates.keys():
-		next_collection = holiday_dates[next_collection]
+		if next_collection in holiday_dates.keys():
+			next_collection = holiday_dates[next_collection]
 
 	return next_collection
 
