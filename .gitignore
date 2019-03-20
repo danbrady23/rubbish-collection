@@ -1,4 +1,7 @@
 *.pkl
 *.html
 *.pyc
-/holiday_page
+holiday_page/
+Old_scripts/
+venv/
+.idea
