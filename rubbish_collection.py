@@ -15,7 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait as WDwait
 try:
     import RPi.GPIO as GPIO
     useGPIO = True
-except ModuleNotFoundError:
+except ImportError:
     print('Module not found. Not updating LEDs')
     useGPIO = False
 
@@ -127,7 +127,10 @@ def open_browser(url):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
 
-    browser = webdriver.Chrome(options=chrome_options)
+    if useGPIO
+        browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
+    else:
+        browser = webdriver.Chrome(options=chrome_options)
 
     browser.get(url)
 
