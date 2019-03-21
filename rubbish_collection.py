@@ -127,7 +127,7 @@ def open_browser(url):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
 
-    if useGPIO
+    if useGPIO:
         browser = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=chrome_options)
     else:
         browser = webdriver.Chrome(options=chrome_options)
