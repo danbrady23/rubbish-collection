@@ -207,7 +207,7 @@ def update_leds(collection_dates, leds):
 
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
-    GPIO.setup(leds.values(), GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(list(leds.values()), GPIO.OUT, initial=GPIO.LOW)
 
     for col_item, col_date in collection_dates.items():
         if col_date == date_tomorrow:
