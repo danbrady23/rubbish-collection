@@ -57,7 +57,7 @@ def main():
 def load_or_update(file_name, update_function, **kwargs):
 
     if os.path.isfile(file_name):
-        with open(file_name, 'r') as file:
+        with open(file_name, 'rb') as file:
             dates = pickle.load(file)
 
         if date.today() >= dates["next_update"]:
