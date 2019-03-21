@@ -82,7 +82,7 @@ def update_collection_dates(file_name, url, address_details, rubbish):
     return collection_dates
 
 
-# NOT WORKING - Get collection info using selenium
+# Get collection info using selenium
 def get_collection_info(url, address_details):
     browser = open_browser(url)
 
@@ -210,7 +210,9 @@ def update_leds(collection_dates, leds):
     GPIO.setup(list(leds.values()), GPIO.OUT, initial=GPIO.LOW)
 
     for col_item, col_date in collection_dates.items():
-        if col_date == date_tomorrow:
+        if col_item == "next_update":
+            continue
+        elif col_date == date_tomorrow:
             GPIO.output(leds[col_item], 1)
         else:
             GPIO.output(leds[col_item], 0)
