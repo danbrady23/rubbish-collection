@@ -74,7 +74,7 @@ def update_collection_dates(file_name, url, address_details, rubbish):
     collection_dates = parse_collection_text(rounds_text, rubbish)  # Parse text for collection dtaes
     collection_dates = holiday_adjustments(url['input'], collection_dates)  # Adjust dates based on holidays
 
-    collection_dates['next_update'] = date.today() + timedelta(days=7)  # Add date for next update
+    collection_dates['next_update'] = dparser.parse("Sunday", fuzzy=True, dayfirst=True)  # Add date for next update
 
     # Save dates into file
     with open(file_name, 'wb') as file:
